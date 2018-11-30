@@ -7,7 +7,7 @@ class FluxesController < ApplicationController
   def create
     @flux = Flux.new(flux_params)
     @flux.save
-    ArticlesCreation.new({url: @flux.url}).research
+    ArticlesCreation.new(url: @flux.url).research
   end
 
   private
