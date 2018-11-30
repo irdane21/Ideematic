@@ -3,6 +3,6 @@ class Flux < ApplicationRecord
   validates :title, presence: true
   validates :title, uniqueness: true
   validates :url, presence: true
-  validates :url, format: { with: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
-    message: "désolé ce n'est pas le bon format" }
+  # validates :url, format: { with: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
+  #   message: "désolé ce n'est pas le bon format" }
 end
