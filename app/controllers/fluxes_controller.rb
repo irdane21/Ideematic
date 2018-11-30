@@ -1,0 +1,2 @@
+class FluxesController < ApplicationController
+end
