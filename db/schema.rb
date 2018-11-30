@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_11_30_220155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "articles", force: :cascade do |t|
+    t.string "Title"
+    t.text "Description"
+    t.string "Url"
+    t.string "Publication"
+    t.integer "Lu"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "flux_id"
+    t.index ["flux_id"], name: "index_articles_on_flux_id"
+  end
+
+  create_table "fluxes", force: :cascade do |t|
+    t.string "Title"
+    t.string "Url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "articles", "fluxes"
 end
