@@ -8,6 +8,7 @@ class ArticlesCreation
   end
 
   def research
+    @newarticles = []
     file = File.open(@url)
     document = Nokogiri::XML(file)
 
@@ -20,6 +21,8 @@ class ArticlesCreation
       article.lu = 0
       article.flux_id = @id
       article.save
+      @newarticles << article
     end
+    @newarticles
   end
 end

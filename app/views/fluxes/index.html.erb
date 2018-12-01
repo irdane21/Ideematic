@@ -1,0 +1,22 @@
+<div class="container">
+  <form action="/action_page.php">
+    <input type="text" name="title" value="title">
+    <br>
+    <input type="text" name="url" value="url">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <div class="row">
+    <%= @fluxes.each do |flux| %>
+      <div class="col-6">
+        <ul>
+          <% flux.articles.each do |article| %>
+            <li>
+              <p><%= article.title %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
