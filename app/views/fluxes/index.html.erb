@@ -1,18 +1,16 @@
 <div class="container">
-  <form action="/action_page.php">
-    <input type="text" name="title" value="title">
-    <br>
-    <input type="text" name="url" value="url">
-    <br><br>
-    <input type="submit" value="Submit">
-  </form>
+  <%= simple_form_for @flux do |f| %>
+    <%= f.input :Title %>
+    <%= f.input :Url %>
+    <%= f.button :submit %>
+  <% end %>
   <div class="row">
-    <%= @fluxes.each do |flux| %>
+    <% @fluxes.each do |flux| %>
       <div class="col-6">
         <ul>
           <% flux.articles.each do |article| %>
             <li>
-              <p><%= article.title %></p>
+              <p><%= article.Title %></p>
             </li>
           <% end %>
         </ul>

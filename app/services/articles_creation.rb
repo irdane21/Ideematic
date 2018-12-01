@@ -1,26 +1,29 @@
-require 'nokogiri'
+require 'rubygems'
+require 'simple-rss'
+require 'open-uri'
 
 class ArticlesCreation
 
-  def initialize
-    @url = url
-    @id = id
+  def initialize(flux)
+    @url = flux.Url
+    @id = flux.id
   end
 
   def research
     @newarticles = []
-    file = File.open(@url)
-    document = Nokogiri::XML(file)
 
-    document.root.xpath('item').each do |article|
+    rss = SimpleRSS.parse open(@url)
+
+    rss.channel.items.each do |item|
       article = Article.new
-      article.title = item.xpath('title').text
-      article.description = item.xpath('description').text
-      article.url = item.xpath('link').text
-      article.publication = item.xpath('pubDate').text
-      article.lu = 0
+      article.Title = item.title
+      article.Description = item.description
+      article.Url = item.link
+      article.Publication = item.pubDate
+      article.Lu = 0
       article.flux_id = @id
-      article.save
+      raise
+      article.save!
       @newarticles << article
     end
     @newarticles
