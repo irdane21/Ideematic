@@ -22,7 +22,6 @@ class ArticlesCreation
       article.Publication = item.pubDate
       article.Lu = 0
       article.flux_id = @id
-      raise
       article.save!
       @newarticles << article
     end
