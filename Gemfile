@@ -7,6 +7,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
+gem 'popper_js', '~> 1.14.5'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 4.1.3'
@@ -15,8 +16,10 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'react-rails'
 gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
 gem 'simple-rss', '~> 1.3', '>= 1.3.3'
+gem "gon"
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -1,3 +1,4 @@
+require 'json'
 class FluxesController < ApplicationController
 
   def index
@@ -17,6 +18,12 @@ class FluxesController < ApplicationController
     else
       raise
     end
+  end
+
+  def actu
+    @fluxes = Flux.all
+    @new_hash_article = Actualisation.new(@fluxes).call
+    gon.newarticles = @new_hash_article
   end
 
   private

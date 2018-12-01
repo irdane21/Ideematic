@@ -12,5 +12,7 @@ class ArticlesController < ApplicationController
 
   end
 
+  def read
 
+  end
 end
