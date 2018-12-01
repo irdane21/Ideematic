@@ -1,0 +1,20 @@
+<div class="container">
+  <%= simple_form_for @flux do |f| %>
+    <%= f.input :Title %>
+    <%= f.input :Url %>
+    <%= f.button :submit %>
+  <% end %>
+  <div class="row">
+    <% @fluxes.each do |flux| %>
+      <div class="col-6">
+        <ul>
+          <% flux.articles.each do |article| %>
+            <li>
+              <p><%= article.Title %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

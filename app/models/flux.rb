@@ -1,8 +1,8 @@
 class Flux < ApplicationRecord
   has_many :articles
-  validates :title, presence: true
-  validates :title, uniqueness: true
-  validates :url, presence: true
-  validates :url, format: { with: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
+  validates :Title, presence: true
+  # validates :Title, uniqueness: true
+  validates :Url, presence: true
+  validates :Url, format: { with: /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z/,
     message: "désolé ce n'est pas le bon format" }
 end

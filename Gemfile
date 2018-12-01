@@ -15,6 +15,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
+gem 'simple-rss', '~> 1.3', '>= 1.3.3'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
