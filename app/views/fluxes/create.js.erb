@@ -1,2 +1,7 @@
-
-jQuery('#fluxes').append('<%= j render 'fluxes/show', flux: @flux %>');
+<% if @flux.errors.any? %>
+  jQuery('#new_flux').html("<%= j render 'fluxes/form', flux: @flux %>");
+<% else %>
+  jQuery('#fluxes').append("<%= j render 'fluxes/show', flux: @flux %>");
+  jQuery('#flux_Url').val('');
+  jQuery('#flux_Title').val('');
+<% end %>

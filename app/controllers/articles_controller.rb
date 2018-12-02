@@ -12,7 +12,32 @@ class ArticlesController < ApplicationController
 
   end
 
-  def read
+  def marklu
+    @fluxes = Flux.all
+    @article = Article.find(params[:id])
+    @article.Lu = 1
+    @flux = Flux.find(@article.flux_id)
+    if @article.save
+      respond_to do |format|
+        format.html { redirect_to fluxes_path(@fluxes) }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to fluxes_path(@fluxes) }
+        format.js
+      end
+    end
+  end
 
+  def markpalu
+    @fluxes = Flux.all
+    @article = Article.find(params[:id])
+    @article.Lu = 0
+    if @article.save
+      redirect_to fluxes_path(@fluxes)
+    else
+      redirect_to fluxes_path(@fluxes)
+    end
   end
 end

@@ -1,13 +1,16 @@
-
-<div class="container">
-  <%= simple_form_for @flux, remote: true do |f| %>
-    <%= f.input :Title %>
-    <%= f.input :Url %>
-    <%= f.button :submit %>
-  <% end %>
-  <div class="row" id="fluxes">
-    <% @fluxes.each do |flux| %>
-      <%= render 'fluxes/show', flux: flux %>
-    <% end %>
+<div class="wrapper">
+  <div class="container">
+    <h1> Welcome to the IdeeMatic RSS Reader!</h1>
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-8 ">
+        <h2>Feel free to add your favorite news website:</h2>
+        <%= render 'fluxes/form', flux: @flux %>
+      </div>
+    </div>
+    <div class="row margin-top" id="fluxes">
+      <% @fluxes.each do |flux| %>
+        <%= render 'fluxes/show', flux: flux %>
+      <% end %>
+    </div>
   </div>
 </div>

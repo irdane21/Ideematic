@@ -1,19 +1,13 @@
-<div class="col-6">
-  <%= flux.Title %>
-  <ul>
-    <% flux.articles.each do |article| %>
-      <li>
-        <a href="<% article.Url%>">
-          <div>
-            <p><%= article.Title %></p>
-            <% if article.Lu == 0 %>
-              <p>Marqué comme non Lu</p>
-            <% else %>
-              <p>Marqué comme Lu</p>
-            <% end %>
-          </div>
-        </a>
-      </li>
-    <% end %>
-  </ul>
+
+<div class="col-6 ">
+  <div class="card">
+    <div class="title">
+      <h2><%= flux.Title %></h2>
+    </div>
+    <ul class="card-overflow">
+      <% flux.articles.each do |article| %>
+        <%= render 'articles/show', article: article %>
+      <% end %>
+    </ul>
+  </div>
 </div>
