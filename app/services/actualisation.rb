@@ -14,15 +14,18 @@ class Actualisation
     @fluxes.each do |flux|
       url = flux.Url
       rss = SimpleRSS.parse open(url)
-      first = rss.channel.items.first
-      last = flux.articles.last
-
-      if first.title != last.Title
+      @array_items = []
+      rss.channel.items.each do |item|
+        @array_items << item
+      end
+      @first = @array_items.first
+      @recent = flux.articles.first
+      if @first.title != @recent.Title
         article = Article.new
-        article.Title = first.title
-        article.Description = first.description
-        article.Url = first.link
-        article.Publication = first.pubDate
+        article.Title = @first.title
+        article.Description = @first.description
+        article.Url = @first.link
+        article.Publication = @first.pubDate
         article.Lu = 0
         article.flux_id = flux.id
         article.save!
@@ -30,5 +33,6 @@ class Actualisation
       else
       end
     end
+    return new_hash_article
   end
 end

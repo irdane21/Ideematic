@@ -1,4 +1,3 @@
-require 'json'
 class FluxesController < ApplicationController
 
   def index
@@ -31,5 +30,4 @@ class FluxesController < ApplicationController
   def flux_params
     params.require(:flux).permit(:Url, :Title)
   end
-
 end
