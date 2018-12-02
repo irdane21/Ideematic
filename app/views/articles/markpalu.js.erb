@@ -1,6 +1,6 @@
-<% if @flux.errors.any? %>
+<% if @article.errors.any? %>
   jQuery('#fluxes').html("<%= j render 'fluxes/show', flux: @flux %>");
 <% else %>
-  jQuery('#${@article.id}').append("<%= j render 'fluxes/show', flux: @flux %>");
-  jQuery('#switchlu').html(<%= link_to "Marqué comme Lu", articles_marklu_path(id: article.id), :remote => true %>)
+  jQuery('#23').html("<%= j render 'articles/show', article: @article %>");
+
 <% end %>
