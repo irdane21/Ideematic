@@ -1,3 +1,4 @@
+
 <div class="container">
   <%= simple_form_for @flux do |f| %>
     <%= f.input :Title %>
@@ -10,7 +11,16 @@
         <ul>
           <% flux.articles.each do |article| %>
             <li>
-              <p><%= article.Title %></p>
+              <a href="<% article.Url%>">
+                <div>
+                  <p><%= article.Title %></p>
+                  <% if article.Lu == 0 %>
+                    <p>Marqué comme non Lu</p>
+                  <% else %>
+                    <p>Marqué comme Lu</p>
+                  <% end %>
+                </div>
+              </a>
             </li>
           <% end %>
         </ul>
