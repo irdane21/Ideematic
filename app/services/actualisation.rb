@@ -18,7 +18,7 @@ class Actualisation
       rss.channel.items.each do |item|
         @array_items << item
       end
-      @first = @array_items.first
+      @first = @array_items.last
       @recent = flux.articles.first
       if @first.title != @recent.Title
         article = Article.new
@@ -36,3 +36,4 @@ class Actualisation
     return new_hash_article
   end
 end
+

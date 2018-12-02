@@ -1,0 +1,19 @@
+<div class="col-6">
+  <%= flux.Title %>
+  <ul>
+    <% flux.articles.each do |article| %>
+      <li>
+        <a href="<% article.Url%>">
+          <div>
+            <p><%= article.Title %></p>
+            <% if article.Lu == 0 %>
+              <p>Marqué comme non Lu</p>
+            <% else %>
+              <p>Marqué comme Lu</p>
+            <% end %>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -11,18 +11,26 @@ class FluxesController < ApplicationController
   end
 
   def create
+    @fluxes = Flux.all
     @flux = Flux.new(flux_params)
     if @flux.save
       @newarticles = ArticlesCreation.new(@flux).research
+      respond_to do |format|
+        format.html { redirect_to fluxes_path(@newarticles) }
+        format.js
+      end
     else
-      raise
+      respond_to do |format|
+        format.html { redirect_to fluxes_path(@fluxes) }
+        format.js
+      end
     end
   end
 
   def actu
     @fluxes = Flux.all
-    @new_hash_article = Actualisation.new(@fluxes).call
-    gon.newarticles = @new_hash_article
+    # @new_hash_article = Actualisation.new(@fluxes).call
+    # gon.newarticles = @new_hash_article
   end
 
   private
@@ -31,3 +39,4 @@ class FluxesController < ApplicationController
     params.require(:flux).permit(:Url, :Title)
   end
 end
+

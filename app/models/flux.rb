@@ -1,5 +1,5 @@
 class Flux < ApplicationRecord
-  has_many :articles
+  has_many :articles, dependent: :destroy
   validates :Title, presence: true
   # validates :Title, uniqueness: true
   validates :Url, presence: true
