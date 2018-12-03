@@ -1,8 +1,6 @@
-//encoding: utf-8
 <% if @article.errors.any? %>
 
 <% else %>
-  const fluxupdate = document.getElementById("flux<%= @flux.id %>");
-          fluxupdate.insertAdjacentHTML("afterbegin", "<%= escape_javascript(render 'articles/show', article: @article).force_encoding("utf-8") %>");
+  jQuery('#<%= @article.id %>').append("<%= render 'articles/show', article: @article %>");
 
 <% end %>
