@@ -1,30 +1,16 @@
-
-<div class="container">
-  <%= simple_form_for @flux do |f| %>
-    <%= f.input :Title %>
-    <%= f.input :Url %>
-    <%= f.button :submit %>
-  <% end %>
-  <div class="row">
-    <% @fluxes.each do |flux| %>
-      <div class="col-6">
-        <ul>
-          <% flux.articles.each do |article| %>
-            <li>
-              <a href="<% article.Url%>">
-                <div>
-                  <p><%= article.Title %></p>
-                  <% if article.Lu == 0 %>
-                    <p>Marqué comme non Lu</p>
-                  <% else %>
-                    <p>Marqué comme Lu</p>
-                  <% end %>
-                </div>
-              </a>
-            </li>
-          <% end %>
-        </ul>
+<div class="wrapper">
+  <div class="container">
+    <h1> Welcome to the IdeeMatic RSS Reader!</h1>
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-8 ">
+        <h2>Feel free to add your favorite news website:</h2>
+        <%= render 'fluxes/form', flux: @flux %>
       </div>
-    <% end %>
+    </div>
+    <div class="row margin-top" id="fluxes">
+      <% @fluxes.each do |flux| %>
+        <%= render 'fluxes/show', flux: flux %>
+      <% end %>
+    </div>
   </div>
 </div>
