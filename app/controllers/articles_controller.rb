@@ -35,9 +35,15 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.Lu = 0
     if @article.save
-      redirect_to fluxes_path(@fluxes)
+      respond_to do |format|
+        format.html { redirect_to fluxes_path(@fluxes) }
+        format.js
+      end
     else
-      redirect_to fluxes_path(@fluxes)
+      respond_to do |format|
+        format.html { redirect_to fluxes_path(@fluxes) }
+        format.js
+      end
     end
   end
 end

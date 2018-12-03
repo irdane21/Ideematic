@@ -1,12 +1,16 @@
 <li id="<%= article.id %>">
-  <div class="content">
-    <p><%= article.Title %></p>
-    <div id="switchlu">
-      <% if article.Lu == 0 %>
-        <%= link_to "Marqué comme Lu", articles_marklu_path(id: article.id), :remote => true %>
-      <% else %>
-        <%= link_to "Marqué comme non Lu", articles_markpalu_path(id: article.id), :remote => true %>
-      <% end %>
+  <a href="<%= article.Url %>" target="_blank" >
+    <div class="content">
+      <p><%= article.Title %></p>
+      <br>
+      <div id="switchlu" class="display">
+        <% if article.Lu == 0 %>
+          <%= link_to "Afficher comme Lu", articles_marklu_path(id: article.id), :remote => true %>
+        <% else %>
+          <p><i class="fas fa-check"></i>Lu</p>
+          <%= link_to "Afficher comme non Lu", articles_markpalu_path(id: article.id), :remote => true %>
+        <% end %>
+      </div>
     </div>
-  </div>
+  </a>
 </li>

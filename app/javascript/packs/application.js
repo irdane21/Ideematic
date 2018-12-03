@@ -15,3 +15,11 @@ ReactRailsUJS.useContext(componentRequireContext)
 //         console.log('coucou')
 //   }});
 // }
+
+document.querySelectorAll("a").forEach((a) => {
+  img.addEventListener("click", function() {
+    $.ajax({
+    url: 'articles/marklu',
+    });
+  });
+});
