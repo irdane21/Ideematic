@@ -1,8 +1,8 @@
 <li id="<%= article.id %>">
-  <a href="<%= article.Url %>" target="_blank" >
     <div class="content">
       <p><%= article.Title %></p>
-      <br>
+
+      <a href="<%= article.Url %>" target="_blank" >Voir l'article <i class="fas fa-arrow-right"></i></a>
       <div id="switchlu" class="display">
         <% if article.Lu == 0 %>
           <%= link_to "Afficher comme Lu", articles_marklu_path(id: article.id), :remote => true %>
@@ -12,5 +12,4 @@
         <% end %>
       </div>
     </div>
-  </a>
 </li>

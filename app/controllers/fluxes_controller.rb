@@ -29,8 +29,15 @@ class FluxesController < ApplicationController
 
   def actu
     @fluxes = Flux.all
-    # @new_hash_article = Actualisation.new(@fluxes).call
-    # gon.newarticles = @new_hash_article
+    @new_hash_article = Actualisation.new(@fluxes).call
+    @new_hash_article.each do |key, value|
+      @flux = key
+      @article = value
+      respond_to do |format|
+        format.html { redirect_to fluxes_path(@fluxes) }
+        format.js
+      end
+    end
   end
 
   private

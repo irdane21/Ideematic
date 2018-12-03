@@ -18,9 +18,16 @@ class Actualisation
       rss.channel.items.each do |item|
         @array_items << item
       end
-      @first = @array_items.last
-      @recent = flux.articles.first
-      if @first.title != @recent.Title
+      @first = @array_items.first
+      calculator = 0
+      flux.articles.each do |article|
+        if article.Publication == @first.pubDate.to_s
+          calculator += 1
+        else
+          calculator += 0
+        end
+      end
+      if calculator == 0
         article = Article.new
         article.Title = @first.title
         article.Description = @first.description
@@ -28,9 +35,8 @@ class Actualisation
         article.Publication = @first.pubDate
         article.Lu = 0
         article.flux_id = flux.id
-        article.save!
+        article.save
         new_hash_article[flux] = article
-      else
       end
     end
     return new_hash_article

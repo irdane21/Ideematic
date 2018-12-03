@@ -1,0 +1,5 @@
+<% if @article.nil? %>
+
+<% else %>
+  jQuery('#<%= @flux.id %>').append("<%= j render 'articles/show', article: @article %>");
+<% end %>

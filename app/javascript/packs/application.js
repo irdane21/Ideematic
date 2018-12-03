@@ -5,21 +5,20 @@ var ReactRailsUJS = require("react_ujs")
 ReactRailsUJS.useContext(componentRequireContext)
 
 
-// var actu = setInterval(myTimer, 20000);
+var actu = setInterval(myTimer, 20000);
 
-// function myTimer() {
-//   $.ajax({
-//       url: '/fluxes/actu',
-//       method: 'GET',
-//       success: function(err, data) { alert()
-//         console.log('coucou')
-//   }});
-// }
-
-document.querySelectorAll("a").forEach((a) => {
-  img.addEventListener("click", function() {
-    $.ajax({
-    url: 'articles/marklu',
-    });
+function myTimer() {
+  $.ajax({
+      url: '/fluxes/actu',
+      method: 'GET',
   });
-});
+}
+
+// document.querySelectorAll("a").forEach((a) => {
+//   a.addEventListener("click", function() {
+//     $("a:parent:parent")
+//     $.ajax({
+//     url: 'articles/marklu',
+//     });
+//   });
+// });
