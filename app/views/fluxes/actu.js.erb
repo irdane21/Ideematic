@@ -1,2 +1,5 @@
-const article = <%= @article %>
-jQuery('#flux<%= @flux.id %>').append('<%= j render 'articles/show', article: @article %>');
+<% if @article.nil? %>
+
+<% else %>
+  jQuery('#flux<%= @flux.id %>').append('<%= j render 'articles/show', article: @article %>');
+<% end %>
