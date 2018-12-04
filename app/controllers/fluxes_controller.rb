@@ -29,8 +29,17 @@ class FluxesController < ApplicationController
 
   def actu
     @fluxes = Flux.all
-    # @new_hash_article = Actualisation.new(@fluxes).call
-    # gon.newarticles = @new_hash_article
+    @new_hash_article = Actualisation.new(@fluxes).call
+    if @new_hash_article.length >= 1
+      @new_hash_article.each do |key, value|
+        @flux = key
+        @article = value
+        respond_to do |format|
+          format.js
+        end
+      end
+    end
+    @new_hash_article
   end
 
   private

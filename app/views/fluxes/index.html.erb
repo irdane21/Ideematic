@@ -1,12 +1,11 @@
 <div class="wrapper">
-  <div class="container">
-    <h1> Welcome to the IdeeMatic RSS Reader!</h1>
-    <div class="row justify-content-md-center">
-      <div class="col-12 col-md-8 ">
-        <h2>Feel free to add your favorite news website:</h2>
-        <%= render 'fluxes/form', flux: @flux %>
-      </div>
+  <div class="header">
+    <div id="addform" class="hide">
+      <%= render 'fluxes/form', flux: @flux %>
     </div>
+    <button id="addflux">Ajouter</button>
+  </div>
+  <div class="container">
     <div class="row margin-top" id="fluxes">
       <% @fluxes.each do |flux| %>
         <%= render 'fluxes/show', flux: flux %>
