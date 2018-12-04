@@ -30,12 +30,13 @@ class FluxesController < ApplicationController
   def actu
     @fluxes = Flux.all
     @new_hash_article = Actualisation.new(@fluxes).call
-    if @new_hash_article.length >= 1
-      @new_hash_article.each do |key, value|
-        @flux = key
-        @article = value
+    @new_hash_article.each do |key, value|
+      @flux = key
+      @article = value
+      if @flux != nil
         respond_to do |format|
           format.js
+          format.html { redirect_to fluxes_path(@newarticles) }
         end
       end
     end
