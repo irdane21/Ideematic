@@ -1,6 +1,2 @@
-<% if @article.errors.any? %>
-
-<% else %>
-  jQuery('#<%= @article.id %>').append("<%= render 'articles/show', article: @article %>");
-
-<% end %>
+const article = <%= @article %>
+jQuery('#flux<%= @flux.id %>').append('<%= j render 'articles/show', article: @article %>');
