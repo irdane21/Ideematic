@@ -3,7 +3,16 @@ class FluxesController < ApplicationController
   def index
     @fluxes = Flux.all
     @flux = Flux.new
-
+    @my_hash = {}
+    @fluxes.each do |flux|
+      @articles = []
+      flux.articles.each do |article|
+        @articles << article
+      end
+      @articles = Article.paginate(:page => params[:page], :per_page => 5)
+      @my_hash[flux] = @articles
+    end
+    @my_hash
   end
 
   def new

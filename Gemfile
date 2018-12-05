@@ -19,7 +19,7 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
 gem 'simple-rss', '~> 1.3', '>= 1.3.3'
-gem "gon"
+gem 'will_paginate', '~> 3.1.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

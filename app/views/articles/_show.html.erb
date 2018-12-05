@@ -1,6 +1,7 @@
 <li id="<%= article.id %>">
     <div class="content">
       <p><%= article.Title %></p>
+      <p><%= article.Description %></p>
       <a href="<%= article.Url %>" target="_blank" data="<%= article.id %>">Voir l'article <i class="fas fa-arrow-right"></i></a>
       <div id="switchlu" class="display">
         <% if article.Lu == 0 %>
