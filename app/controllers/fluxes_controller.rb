@@ -39,7 +39,6 @@ class FluxesController < ApplicationController
         end
       end
     end
-    @new_hash_article
   end
 
   private
