@@ -9,7 +9,7 @@ class FluxesController < ApplicationController
       flux.articles.each do |article|
         @articles << article
       end
-      @articles = Article.paginate(:page => params[:page], :per_page => 5)
+      @flux.articles = Article.paginate(:page => params[:page], :per_page => 5)
       @my_hash[flux] = @articles
     end
     @my_hash

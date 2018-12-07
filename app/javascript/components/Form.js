@@ -1,20 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
+
 class Form extends React.Component {
   render () {
-    return (
-      <React.Fragment>
-        json.messages(@messages) do |message|
-          json.extract! message, :title, :title
-          json.url message_url(message, format: :json)
-        end
-      </React.Fragment>
-    );
+    return (<div>
+        <%= simple_form_for @flux, remote: true do |f| %>
+          <%= f.input :Title %>
+          <%= f.input :Url %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>);
   }
 }
 
-Form.propTypes = {
-  greeting: PropTypes.string
-};
-export default Form
+export default Form;
 

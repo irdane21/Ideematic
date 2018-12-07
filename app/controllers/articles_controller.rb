@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   end
 
-  def marklu
+  def read
     @fluxes = Flux.all
     @article = Article.find(params[:id])
     @article.Lu = 1
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def markpalu
+  def unread
     @fluxes = Flux.all
     @article = Article.find(params[:id])
     @article.Lu = 0
