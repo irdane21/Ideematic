@@ -5,10 +5,10 @@
       <a href="<%= article.Url %>" target="_blank" data="<%= article.id %>">Voir l'article <i class="fas fa-arrow-right"></i></a>
       <div id="switchlu" class="display">
         <% if article.Lu == 0 %>
-          <%= link_to "Afficher comme Lu", flux_articles_read_path(id: article.id), :remote => true %>
+          <%= link_to "Afficher comme Lu", articles_read_path(id: article.id), :remote => true %>
         <% else %>
           <p><i class="fas fa-check"></i>Lu</p>
-          <%= link_to "Afficher comme non Lu", flux_articles_unread_path(id: article.id), :remote => true %>
+          <%= link_to "Afficher comme non Lu", articles_unread_path(id: article.id), :remote => true %>
         <% end %>
       </div>
     </div>

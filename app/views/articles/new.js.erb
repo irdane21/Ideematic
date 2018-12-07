@@ -1,0 +1,5 @@
+<% if @article.nil? %>
+
+<% else %>
+  jQuery('#flux<%= @flux.id %>').html("<%= render 'articles/show', article: @article %>");
+<% end %>

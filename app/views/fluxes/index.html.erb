@@ -7,10 +7,11 @@
   </div>
   <div class="container">
     <div class="row margin-top" id="fluxes">
-      <% @my_hash.each do |key, value| %>
-        <%= render 'fluxes/show', flux: key, articles: value %>
+      <% @fluxes.each do |flux| %>
+        <%= render 'fluxes/show', flux: flux%>
       <% end %>
     </div>
   </div>
 </div>
+
 
