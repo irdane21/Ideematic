@@ -23,14 +23,14 @@ function myTimer() {
 //     el.dispatchEvent(evObj);
 //   }
 // }
-const addflux = document.getElementById("addflux");
-if( addflux != null ) {
-  addflux.addEventListener("click", (event) => {
-    event.currentTarget.classList.toggle("hide");
-    const addform = document.getElementById("addform");
-    addform.classList.toggle("hide");
-  });
-}
+// const addflux = document.getElementById("addflux");
+// if( addflux != null ) {
+//   addflux.addEventListener("click", (event) => {
+//     event.currentTarget.classList.toggle("hide");
+//     const addform = document.getElementById("addform");
+//     addform.classList.toggle("hide");
+//   });
+// }
 
 // const clickread = document.querySelectorAll("a").forEach((a) => {
 //   a.addEventListener("click", (event) => {

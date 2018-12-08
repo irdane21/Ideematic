@@ -1,17 +1,12 @@
 <div class="wrapper">
   <div class="header">
-    <div id="addform" class="hide">
-      <%= render 'fluxes/form', flux: @flux %>
+    <div id="new-flux">
+      <%= link_to 'New Flux', new_flux_path, remote: true %>
     </div>
-    <button id="addflux" class="btn btn-success">Ajouter</button>
   </div>
   <div class="container">
     <div class="row margin-top" id="fluxes">
-      <% @fluxes.each do |flux| %>
-        <%= render 'fluxes/show', flux: flux%>
-      <% end %>
+      <%= render @fluxes %>
     </div>
   </div>
 </div>
-
-

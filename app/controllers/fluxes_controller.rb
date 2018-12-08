@@ -2,12 +2,17 @@ class FluxesController < ApplicationController
 
   def index
     @fluxes = Flux.all
-    @flux = Flux.new
-    @flux.articles = Article.paginate(:page => params[:page], :per_page => 5)
+    @fluxes.each do |flux|
+    end
+    # @flux.articles = Article.paginate(:page => params[:page], :per_page => 5)
   end
 
   def new
     @flux = Flux.new
+    respond_to do |format|
+      format.js
+      format.html { redirect_to fluxes_path }
+    end
   end
 
   def create

@@ -1,5 +1,5 @@
 <% if @article.nil? %>
 
 <% else %>
-  jQuery('#flux<%= @flux.id %>').html("<% @flux.articles.each { |article| render 'articles/show', article: @article } %>");
+  $('#flux<%= @flux.id %>').firstChild().append("<%= j render 'show', article: @article %>");
 <% end %>
