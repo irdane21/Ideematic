@@ -1,10 +1,20 @@
 class FluxesController < ApplicationController
+  require 'date'
 
   def index
+    # @fluxes = {}
+    # Flux.all.each do |flux|
+    #   articles = flux.articles.sort { |x,y|
+    #     if Date.parse(x.Publication) - Date.today > Date.parse(y.Publication) - Date.today
+    #       y <=> x
+    #     else
+    #       x <=> y
+    #     end
+    #   articles = Article.paginate(:page => params[:page], :per_page => 5)
+    #   @fluxes[flux] = articles
+    #   }
+    # end
     @fluxes = Flux.all
-    @fluxes.each do |flux|
-    end
-    # @flux.articles = Article.paginate(:page => params[:page], :per_page => 5)
   end
 
   def new

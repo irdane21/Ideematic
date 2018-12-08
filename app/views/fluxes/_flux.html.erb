@@ -6,7 +6,7 @@
     </div>
     <ul class="card-overflow" id="flux<%= flux.id %>">
       <% flux.articles.each do |article| %>
-        <%= render partial: 'articles/article', collection: @articles %>
+        <%= render 'articles/article', article: article %>
       <% end %>
     </ul>
   </div>
