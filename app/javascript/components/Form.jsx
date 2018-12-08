@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 class Form extends React.Component {
   render () {
     return (<div>
-        bite
+        bite{this.props.flux}
       </div>);
   }
 }
