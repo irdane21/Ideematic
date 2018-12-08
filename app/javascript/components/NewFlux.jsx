@@ -1,10 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
+import ReactDOM from 'react-dom'
 
 class NewFlux extends React.Component {
   render () {
     return (<div id="new-flux">
-        <a href="new_flux_path" data-remote="true">New Flux</a>
+        <a href="/fluxes/new" data-remote="true">New Flux</a>
       </div>);
   }
 }

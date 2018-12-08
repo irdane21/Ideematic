@@ -1,13 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
+import ReactDOM from 'react-dom'
 
 class Form extends React.Component {
   render () {
     return (<div>
-        bite{this.props.flux}
+        Hello
       </div>);
   }
 }
 
 export default Form;
-
