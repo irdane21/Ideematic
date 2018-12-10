@@ -2,16 +2,12 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-import NewFlux from '../components/NewFlux'
-import Form from '../components/Form'
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import PropTypes from 'prop-types'
+// import Fluxes from '../Fluxes'
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <NewFlux/>,
-    <Form/>,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+// ReactDOM.render(
+//   <Fluxes/>,
+//   document.body.appendChild(document.createElement('div')),
+// )

@@ -1,1 +1,7 @@
-<%= javascript_pack_tag 'hello_react' %>
+<div class="container">
+  <%= react_component 'NewFlux' %>
+  <div class="row margin-top" id="fluxes">
+    <%= react_component("Fluxes", fluxes: @fluxes) %>
+  </div>
+</div>
+
