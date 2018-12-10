@@ -5,7 +5,7 @@ import axios from 'axios'
 import Article from './Article'
 
 function DisplayFlux(props) {
-  console.log("display", props.fluxes[0])
+  console.log("péage1", props)
     const listflux = props.fluxes.map((flux)=>{
       return (
         <div className="col col-md-6" key={flux.id}>
@@ -26,30 +26,33 @@ function DisplayFlux(props) {
 }
 
 function DefineArticles(props) {
-  axios.get('/articles/{props.id}').then((response)=> {console.log(response)
-    return (
-      <DisplayArticles articles={response}/>
-      );
-  })
-}
+  const url = "/articles?id=" + props.id
+  axios.get(url).then((response)=> {
+    console.log("péage 2", response.data)
+    render(){
+      return (
+        <DisplayArticles articles={response.data}/>
+        )
+      })
+    }
+};
 
 function DisplayArticles(props) {
-  console.log("bite", props.response)
-    const listarticles = props.response.map((article)=>{
-      return (
-        <div>bite</div>
-      );
-    }
+  console.log("péage 3", props)
+  const listarticles = props.articles.map((article)=>{
+    return (<ul className="card-overflow" key={article.id}>
+      <Article article={article}/>
+      </ul>
+    );
+  });
   return (
     <ul className="card-overflow" key={article.id}>
       {listarticles}
     </ul>
   );
 }
-
 class Fluxes extends React.Component {
   render () {
-    console.log(this.props.fluxes)
     return (
       <DisplayFlux fluxes={this.props.fluxes}/>
     );

@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 
 class Article extends React.Component {
   render () {
+    console.log("péage 4", this.props.article)
     return (
       <li key={this.props.article.id}>
         <div className="content">
