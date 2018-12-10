@@ -6,12 +6,15 @@
     <title>TODO</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <%= javascript_pack_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-    <%= javascript_pack_tag 'application' %>
   </head>
   <body>
+    <noscript>
+      You need to enable Javascript to run this app
+    </noscript>
     <%= yield %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_include_tag 'application' %>

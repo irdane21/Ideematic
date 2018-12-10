@@ -1,15 +1,13 @@
-
 // Support component names relative to this directory:
 var componentRequireContext = require.context("components", true)
 var ReactRailsUJS = require("react_ujs")
 ReactRailsUJS.useContext(componentRequireContext)
 
-
-var actu = setInterval(myTimer, 60000);
+var actu = setInterval(myTimer, 20000);
 
 function myTimer() {
   $.ajax({
-      url: '/fluxes/actu',
+      url: '/articles/new',
       method: 'GET',
   });
 }
@@ -23,13 +21,14 @@ function myTimer() {
 //     el.dispatchEvent(evObj);
 //   }
 // }
-
-const addflux = document.getElementById("addflux");
-addflux.addEventListener("click", (event) => {
-  event.currentTarget.classList.toggle("hide");
-  const addform = document.getElementById("addform");
-  addform.classList.toggle("hide");
-});
+// const addflux = document.getElementById("addflux");
+// if( addflux != null ) {
+//   addflux.addEventListener("click", (event) => {
+//     event.currentTarget.classList.toggle("hide");
+//     const addform = document.getElementById("addform");
+//     addform.classList.toggle("hide");
+//   });
+// }
 
 // const clickread = document.querySelectorAll("a").forEach((a) => {
 //   a.addEventListener("click", (event) => {
@@ -38,4 +37,3 @@ addflux.addEventListener("click", (event) => {
 //     console.log(link);
 //   });
 // });;
-

@@ -20,7 +20,6 @@ class ArticlesCreation
       article.Description = item.description
       article.Url = item.link
       article.Publication = item.pubDate
-      article.Lu = 0
       article.flux_id = @id
       article.save
       @newarticles << article

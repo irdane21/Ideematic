@@ -1,16 +1,7 @@
-<div class="wrapper">
-  <div class="header">
-    <div id="addform" class="hide">
-      <%= render 'fluxes/form', flux: @flux %>
-    </div>
-    <button id="addflux" class="btn btn-success">Ajouter</button>
-  </div>
-  <div class="container">
-    <div class="row margin-top" id="fluxes">
-      <% @my_hash.each do |key, value| %>
-        <%= render 'fluxes/show', flux: key, articles: value %>
-      <% end %>
-    </div>
+<div class="container">
+  <%= react_component 'NewFlux' %>
+  <div class="row margin-top" id="fluxes">
+    <%= react_component("Fluxes", fluxes: @fluxes) %>
   </div>
 </div>
 
