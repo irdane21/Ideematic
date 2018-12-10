@@ -24,18 +24,18 @@ function DisplayFlux(props) {
     </div>
   );
 }
-
-function DefineArticles(props) {
+async function DefineArticles(props) {
   const url = "/articles?id=" + props.id
-  return axios.get(url).then((response)=> {
-    console.log("péage 2", response.data)
-    return response.data.json
-  })
+  const request = await axios({method: 'get', url: url, timeout: 3000})
+  const articles =request.response
+  return (
+    {articles}
+    )
 };
 
 function DisplayArticles(props) {
   const articles = DefineArticles(props)
-  const articles.then((articles)=> console.log("péage3", articles))
+  console.log("péage3", articles)
   const listarticles = articles.map((article)=>{
     return (<ul className="card-overflow" key={article.id}>
       <Article article={article}/>
@@ -48,6 +48,7 @@ function DisplayArticles(props) {
     </ul>
   );
 }
+
 class Fluxes extends React.Component {
   render () {
     return (
@@ -55,5 +56,4 @@ class Fluxes extends React.Component {
     );
   }
 }
-
 export default Fluxes;
