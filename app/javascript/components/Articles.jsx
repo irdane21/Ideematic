@@ -1,22 +1,21 @@
 import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
-import Form from './Form'
-import Articles from './Articles'
 
-function DisplayFlux(props) {
+function DisplayArticles(props) {
   return (
-    <div className="col col-md-6">
-      <div className="Header">
-        <h2>{props.Title}</h2>
+    <li id="<%= article.id %>">
+      <div className="content">
+        <p>{props.Title}  </p>
+        <p>{props.Description} </p>
+        <a href="{props.Url}" target="_blank" data="<%= article.id %>">Voir l'article <i class="fas fa-arrow-right"></i></a>
+        <div id="switchlu" class="display">
+        </div>
       </div>
-      <ul>
-        <Articles/>
-      </ul>
-    </div>
+    </li>
   );
 }
-class Fluxes extends React.Component {
+class Articles extends React.Component {
   // constructor(props){
   //   super();
   //   this.state = props.fluxes
