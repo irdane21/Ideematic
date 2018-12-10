@@ -16,7 +16,7 @@ class Form extends React.Component {
     this.setState({value: event.target.value});
   }
 
-  handlesubmit(evetnt){
+  handlesubmit(evet){
     let message = event.target.value
     axios.post('/fluxes/create', `Title=${Title}`, `Url=${Url}`)
 
@@ -35,3 +35,4 @@ class Form extends React.Component {
 }
 
 export default Form;
+

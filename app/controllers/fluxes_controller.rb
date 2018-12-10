@@ -6,10 +6,11 @@ class FluxesController < ApplicationController
 
   def new
     @flux = Flux.new
-    respond_to do |format|
-      format.js
-      format.html { redirect_to fluxes_path }
-    end
+    render json: @flux
+    # respond_to do |format|
+    #   format.js
+    #   format.html { redirect_to fluxes_path }
+    # end
   end
 
   def create
