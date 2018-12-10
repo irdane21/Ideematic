@@ -5,7 +5,6 @@ require 'open-uri'
 class ArticlesController < ApplicationController
 
   def index
-    p params[:id]
     @articles = Article.where(flux_id: params[:id])
     render json: @articles
   end

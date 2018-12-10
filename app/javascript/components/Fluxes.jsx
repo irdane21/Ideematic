@@ -13,7 +13,7 @@ function DisplayFlux(props) {
             <h2>{flux.Title}</h2>
           </div>
           <ul>
-            <DefineArticles id={flux.id}/>
+            <DisplayArticles id={flux.id}/>
           </ul>
         </div>)
       }
@@ -27,19 +27,16 @@ function DisplayFlux(props) {
 
 function DefineArticles(props) {
   const url = "/articles?id=" + props.id
-  axios.get(url).then((response)=> {
+  return axios.get(url).then((response)=> {
     console.log("péage 2", response.data)
-    render(){
-      return (
-        <DisplayArticles articles={response.data}/>
-        )
-      })
-    }
+    return response.data.json
+  })
 };
 
 function DisplayArticles(props) {
-  console.log("péage 3", props)
-  const listarticles = props.articles.map((article)=>{
+  const articles = DefineArticles(props)
+  const articles.then((articles)=> console.log("péage3", articles))
+  const listarticles = articles.map((article)=>{
     return (<ul className="card-overflow" key={article.id}>
       <Article article={article}/>
       </ul>
