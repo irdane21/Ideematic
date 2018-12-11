@@ -34,8 +34,7 @@ class Form extends React.Component {
       headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
       url: '/fluxes',
       data: {Title: this.state.Title, Url: this.state.Url}
-    })
-    .then(response()=>{ console.log(response)})
+    });
   }
 
   render () {

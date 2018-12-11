@@ -28,10 +28,21 @@ function DefineArticles(props) {
   const url = "/articles?id=" + props.id
   const request = axios.get(url)
   const articles = request.then((response)=>{
-    return(
-      {response}
+    response.data.map((article)=>{
+      return (<ul className="card-overflow" key={article.id}>
+        <Article article={article}/>
+        </ul>
+      );
+    })
+    return (
+      {articles}
     )
   })
+  return (
+    <ul className="card-overflow" key={article.id}>
+      {articles}
+    </ul>
+  );
 };
 
 function DisplayArticles(props) {
