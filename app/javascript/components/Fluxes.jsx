@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import Article from './Article'
 import Flux from './Flux'
 
 function DisplayFlux(props) {
@@ -13,7 +12,7 @@ function DisplayFlux(props) {
           <div className="Header">
             <h2>{flux.Title}</h2>
           </div>
-          <ul>
+          <ul className="card-overflow">
             <Flux id={flux.id}/>
           </ul>
         </div>)

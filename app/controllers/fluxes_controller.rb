@@ -10,7 +10,6 @@ class FluxesController < ApplicationController
   end
 
   def create
-    p flux_params
     @fluxes = Flux.all
     @flux = Flux.new(flux_params)
     if @flux.save

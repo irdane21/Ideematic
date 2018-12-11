@@ -2,41 +2,40 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import Article from './Article'
 
 
 function DisplayArticles(props) {
-  console.log("péage3", props)
-  const listarticles = articles.map((article)=>{
-    return (<ul className="card-overflow" key={article.id}>
+  console.log("péage3", props.articles)
+  const listarticles = props.articles.map((article)=>{
+    return (
       <Article article={article}/>
-      </ul>
     );
   });
   return (
-    <ul className="card-overflow" key={article.id}>
-      {listarticles}
-    </ul>
+    <div>{listarticles}</div>
   );
 }
 
 class Flux extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { articles: [] };
+    this.state = { articles: []};
+    this.setState = this.setState.bind(this);
   }
 
-  getthearticles(){
-    const url = "/articles?id=" + props.id
-    axios.get(url).then((response)=>{
+  componentWillMount(){
+    console.log("péage1.5", this.props.id)
+    const url = "/articles?id=" + this.props.id
+    const request = axios.get(url).then((response)=>{
+      console.log('response',response);
       this.setState({articles: response.data})
     })
-    console.log("péage2", this.state.articles)
   }
-
 
   render () {
     return (
-      <DisplayArticles articles={this.getthearticles()}/>
+      <DisplayArticles articles={this.state.articles}/>
     );
   }
 }

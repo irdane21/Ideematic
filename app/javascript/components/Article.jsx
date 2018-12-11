@@ -7,6 +7,12 @@ class Article extends React.Component {
   constructor(props) {
     super(props);
     this.state = { lu: this.props.Lu };
+
+    this.markasread = this.markasread.bind(this);
+  }
+
+  markasread(){
+    this.setState({lu: 1})
   }
 
   render () {
@@ -16,9 +22,8 @@ class Article extends React.Component {
         <div className="content">
           <p>{this.props.article.Title}  </p>
           <p>{this.props.article.Description} </p>
-          <p> Voir l'article</p>
-          <div id="switchlu" class="display">
-          </div>
+          <a href={this.props.article.Url} target="blank" OnClick={()=> this.markasread}> Voir l'article</a>
+          { this.state.lu && <p></p>}
         </div>
       </li>);
   }
