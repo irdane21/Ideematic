@@ -2,20 +2,30 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import Form from './Form'
 
 class NewFlux extends React.Component {
-  // handlesubmit(e){
-  //   let message = e.arget.element[0].value
-  //   axios.post('/fluxes/new')
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
 
-  // }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(){
+    this.setState({ open: !this.state.open })
+  }
+
   render () {
     return (<div id="new-flux">
-        <a href="/fluxes/new" data-remote="true">New Flux</a>
+      { !this.state.open && <div className="btn btn-success" onClick={this.handleClick}>New Flux</div>}
+      { this.state.open && <Form/>}
+
       </div>);
   }
 }
 
 export default NewFlux;
+
 
 
