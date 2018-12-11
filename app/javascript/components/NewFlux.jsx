@@ -8,16 +8,19 @@ class NewFlux extends React.Component {
   constructor(props) {
     super(props);
     this.state = {open: false};
+
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(e){
-    let message = e.target
-    axios.get('/fluxes/new').then((response)=> {console.log(response)})
-
+  handleClick(){
+    this.setState({ open: !this.state.open })
   }
+
   render () {
-    return (<div id="new-flux" onClick={this.handleClick}>
-        New Flux
+    return (<div id="new-flux">
+      { !this.state.open && <div className="btn btn-success" onClick={this.handleClick}>New Flux</div>}
+      { this.state.open && <Form/>}
+
       </div>);
   }
 }

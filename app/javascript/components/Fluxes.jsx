@@ -24,13 +24,14 @@ function DisplayFlux(props) {
     </div>
   );
 }
-async function DefineArticles(props) {
+function DefineArticles(props) {
   const url = "/articles?id=" + props.id
-  const request = await axios({method: 'get', url: url, timeout: 3000})
-  const articles =request.response
-  return (
-    {articles}
+  const request = axios.get(url)
+  const articles = request.then((response)=>{
+    return(
+      {response}
     )
+  })
 };
 
 function DisplayArticles(props) {
