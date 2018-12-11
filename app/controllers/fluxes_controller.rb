@@ -7,25 +7,18 @@ class FluxesController < ApplicationController
   def new
     @flux = Flux.new
     render json: @flux
-    # respond_to do |format|
-    #   format.js
-    #   format.html { redirect_to fluxes_path }
-    # end
   end
 
   def create
+    p flux_params
     @fluxes = Flux.all
     @flux = Flux.new(flux_params)
     if @flux.save
       @newarticles = ArticlesCreation.new(@flux).research
-      respond_to do |format|
-        format.html { redirect_to fluxes_path }
-        format.js
-      end
+      render json: @flux
     else
       respond_to do |format|
         format.html { redirect_to fluxes_path(@fluxes) }
-        format.js
       end
     end
   end
