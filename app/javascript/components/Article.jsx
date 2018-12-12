@@ -32,9 +32,9 @@ class Article extends React.Component {
         <div className="content">
           <p>{this.props.article.Title}  </p>
           <p>{this.props.article.Description} </p>
-          <a href={this.props.article.Url} target="blank" OnClick={()=> this.markasread}> Voir l'article</a>
-          { this.state.lu && <p OnClick={()=> this.markasunread}>Cet article est marqué comme Lu</p>}
-          { !this.state.lu && <p OnClick={()=> this.markasread}>Cet article est marqué comme non Lu</p>}
+          <a href={this.props.article.Url} target="blank" onClick={()=> this.markasread}> Voir l'article</a>
+          { this.state.lu && <p onClick={()=> this.markasunread}>Cet article est marqué comme Lu</p>}
+          { !this.state.lu && <p onClick={()=> this.markasread}>Cet article est marqué comme non Lu</p>}
         </div>
       </li>);
   }

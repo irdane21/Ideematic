@@ -35,9 +35,8 @@ class Timer extends React.Component {
         return( <div></div>
         )
       } else {
-        this.setState({article: response.data})
         return(
-          <Article article={article}/>
+          <Article article={response.data}/>
         )
       }
     })

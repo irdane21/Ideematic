@@ -15,7 +15,7 @@ function DisplayArticles(props) {
     );
   });
   return (
-    <div>{listarticles}</div>
+    <div key={props.id}>{listarticles}</div>
   );
 }
 

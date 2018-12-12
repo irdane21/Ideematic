@@ -36,11 +36,12 @@ class ArticlesController < ApplicationController
       article.Publication = @first.pubDate
       article.flux_id = @flux.id
       @article = article
+      #@article.force_encoding("utf-8")
       if @article.save
         render json: @article
+      else
+        render json: '0'
       end
-    else
-      render json: 0
     end
   end
 
