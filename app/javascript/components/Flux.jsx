@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import Article from './Article'
+import Timer from './Timer'
+//import { Pagination } from 'semantic-ui-react'
 
 
 function DisplayArticles(props) {
@@ -34,8 +36,10 @@ class Flux extends React.Component {
   }
 
   render () {
-    return (
+    return ( <div>
+      <Timer id={this.props.id}/>
       <DisplayArticles articles={this.state.articles}/>
+      </div>
     );
   }
 }
