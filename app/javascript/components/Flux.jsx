@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import Article from './Article'
-import Timer from './Timer'
 //import { Pagination } from 'semantic-ui-react'
 
 
@@ -15,7 +14,7 @@ function DisplayArticles(props) {
     );
   });
   return (
-    <div key={props.id}>{listarticles}</div>
+    <div>{listarticles}</div>
   );
 }
 
@@ -26,19 +25,45 @@ class Flux extends React.Component {
     this.setState = this.setState.bind(this);
   }
 
-  componentWillMount(){
-    console.log("péage1.5", this.props.id)
-    const url = "/articles?id=" + this.props.id
+  getArticles(){
+    const url = "/fluxes/" + this.props.id + "/articles"
     const request = axios.get(url).then((response)=>{
-      console.log('response',response);
+      console.log('getArticles',response.data);
       this.setState({articles: response.data})
     })
   }
 
+  checkArticles() {
+    console.log("endtimer")
+    const url = "/fluxes/" + this.props.id + "/articles/new"
+    axios({
+      method: 'post',
+      headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+      url: url,
+    }).then((response) => {
+      if (response.data != 0) {
+        console.log('response from new',response.data)
+        this.setState({articles: response.data})
+      }
+    });
+  }
+
+
+  componentWillMount(){
+    console.log("péage1.5", this.props.id)
+    this.getArticles();
+    this.timerID = setInterval(
+      () => this.checkArticles(),
+      120000
+    );
+  }
+
+
+
   render () {
-    return ( <div>
-      <Timer id={this.props.id}/>
-      <DisplayArticles articles={this.state.articles}/>
+    return (
+      <div>
+        <DisplayArticles articles={this.state.articles}/>
       </div>
     );
   }

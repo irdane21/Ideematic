@@ -27,14 +27,10 @@ class Form extends React.Component {
     this.setState({Url: event.target.value});
   }
 
-  OnSubmit(){
-    console.log(this.state);
-    axios({
-      method: 'post',
-      headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
-      url: '/fluxes',
-      data: {Title: this.state.Title, Url: this.state.Url}
-    });
+  OnSubmit(e){
+    e.preventDefault();
+    this.props.handleSubmit(this.state.Title, this.state.Url)
+    this.setState({ open: !this.state.open });
   }
 
   render () {
@@ -46,7 +42,7 @@ class Form extends React.Component {
           <input type="text" className="form-control" value={this.state.Title} onChange={this.handleChange1}/>
           <p>Url</p>
           <input type="text" className="form-control" value={this.state.Url} onChange={this.handleChange2}/>
-          <button className="btn btn-success" onClick={() => this.OnSubmit()}>Create</button>
+          <button className="btn btn-success" onClick={e => this.OnSubmit(e)}>Create</button>
         </form>
       }
       </div>
