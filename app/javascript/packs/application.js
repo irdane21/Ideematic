@@ -3,14 +3,14 @@ var componentRequireContext = require.context("components", true)
 var ReactRailsUJS = require("react_ujs")
 ReactRailsUJS.useContext(componentRequireContext)
 
-var actu = setInterval(myTimer, 20000);
+// var actu = setInterval(myTimer, 20000);
 
-function myTimer() {
-  $.ajax({
-      url: '/articles/new',
-      method: 'GET',
-  });
-}
+// function myTimer() {
+//   $.ajax({
+//       url: '/articles/new',
+//       method: 'GET',
+//   });
+// }
 
 // function eventFire(el, etype){
 //   if (el.fireEvent) {

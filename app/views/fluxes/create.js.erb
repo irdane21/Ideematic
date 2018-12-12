@@ -1,9 +1,0 @@
-<% if @flux.errors.any? %>
-  jQuery('#new-flux form').html("<%= j render 'fluxes/form', flux: @flux %>");
-<% else %>
-  jQuery('#new-flux form').remove()
-  jQuery('#new-flux a').show()
-  jQuery('#fluxes').append("<%= j render @flux %>");
-  jQuery('#flux_Url').val('');
-  jQuery('#flux_Title').val('');
-<% end %>

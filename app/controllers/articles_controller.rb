@@ -7,37 +7,40 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.where(flux_id: params[:id])
     render json: @articles
+    #@articles = Article.paginate(:page => params[:page], :per_page => 5)
+    # render json: {
+    #   article: @articles,
+    #   page: @articles.current_page,
+    #   pages: @articles.total_pages,
+    # }
   end
 
   def new
-    @fluxes = Flux.all
+    @flux = Flux.find(params[:id])
 
-    @fluxes.each do |flux|
-      @array_items = call(flux)
-      @first = @array_items.first
-      calculator = 0
-      flux.articles.each do |article|
-        if article.Publication == @first.pubDate.to_s
-          calculator += 1
-        else
-          calculator += 0
-        end
+    @array_items = call(@flux)
+    @first = @array_items.first
+    calculator = 0
+    @flux.articles.each do |article|
+      if article.Publication == @first.pubDate.to_s
+        calculator += 1
+      else
+        calculator += 0
       end
-      if calculator == 0
-        article = Article.new
-        article.Title = @first.title
-        article.Description = @first.description
-        article.Url = @first.link
-        article.Publication = @first.pubDate
-        article.flux_id = flux.id
-        @article = article
-        if @article.save
-          @flux = flux
-          respond_to do |format|
-            format.js
-            format.html { redirect_to fluxes_path(@fluxes) }
-          end
-        end
+    end
+    if calculator == 0
+      article = Article.new
+      article.Title = @first.title
+      article.Description = @first.description
+      article.Url = @first.link
+      article.Publication = @first.pubDate
+      article.flux_id = @flux.id
+      @article = article
+      #@article.force_encoding("utf-8")
+      if @article.save
+        render json: @article
+      else
+        render json: '0'
       end
     end
   end
@@ -45,42 +48,30 @@ class ArticlesController < ApplicationController
   def read
     @fluxes = Flux.all
     @article = Article.find(params[:id])
-    @article.Lu = 1
+    @article.Lu = true
     @flux = Flux.find(@article.flux_id)
     if @article.save
-      respond_to do |format|
-        format.html { redirect_to fluxes_path(@fluxes) }
-        format.js
-      end
+      render json: @article
     else
-      respond_to do |format|
-        format.html { redirect_to fluxes_path(@fluxes) }
-        format.js
-      end
+      redirect_to fluxes_path(@fluxes)
     end
   end
 
   def unread
     @fluxes = Flux.all
     @article = Article.find(params[:id])
-    @article.Lu = 0
+    @article.Lu = false
     if @article.save
-      respond_to do |format|
-        format.html { redirect_to fluxes_path(@fluxes) }
-        format.js
-      end
+      render json: @article
     else
-      respond_to do |format|
-        format.html { redirect_to fluxes_path(@fluxes) }
-        format.js
-      end
+      redirect_to fluxes_path(@fluxes)
     end
   end
 
   private
 
   def call(flux)
-    url = flux.Url
+    url = @flux.Url
     rss = SimpleRSS.parse open(url)
     @array_items = []
     rss.channel.items.each do |item|

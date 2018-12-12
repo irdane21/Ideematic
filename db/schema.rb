@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_07_205940) do
+ActiveRecord::Schema.define(version: 2018_12_11_230259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 2018_12_07_205940) do
     t.text "Description"
     t.string "Url"
     t.string "Publication"
-    t.integer "Lu", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "flux_id"
+    t.boolean "Lu", default: false
     t.index ["flux_id"], name: "index_articles_on_flux_id"
   end
 

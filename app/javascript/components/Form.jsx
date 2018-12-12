@@ -6,41 +6,47 @@ import axios from 'axios'
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value1: '', value2: '', open: false};
+    this.state = {Title: '', Url: '', open: false};
 
     this.handleChange1 = this.handleChange1.bind(this);
     this.handleChange2 = this.handleChange2.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.OnSubmit = this.OnSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(){
     this.setState({ open: !this.state.open })
+    console.log(this.state.Title)
   }
 
   handleChange1(event) {
-    this.setState({value1: event.target.value});
+    this.setState({Title: event.target.value});
   }
 
   handleChange2(event) {
-    this.setState({value2: event.target.value});
+    this.setState({Url: event.target.value});
   }
 
-  handleSubmit(event){
-    let message = event.target.value
-    axios.post('/fluxes/create', `Title=${Title}`, `Url=${Url}`)
-    this.state({ open: false})
+  OnSubmit(){
+    console.log(this.state);
+    axios({
+      method: 'post',
+      headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+      url: '/fluxes',
+      data: {Title: this.state.Title, Url: this.state.Url}
+    });
   }
+
   render () {
     return (<div id="new-flux">
-      { !this.state.open && <div className="btn btn-success" onClick={this.handleClick}>New Flux</div>}
+      { !this.state.open && <div className="btn btn-success" onClick={this.handleClick}>Ajouter un Flux</div>}
       { this.state.open &&
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <p>Title</p>
-          <input type="text" className="form-control" value={this.state.value1} onChange={this.handleChange1}/>
+          <input type="text" className="form-control" value={this.state.Title} onChange={this.handleChange1}/>
           <p>Url</p>
-          <input type="text" className="form-control" value={this.state.value2} onChange={this.handleChange2}/>
-          <button className="btn btn-success" type="submit">Create</button>
+          <input type="text" className="form-control" value={this.state.Url} onChange={this.handleChange2}/>
+          <button className="btn btn-success" onClick={() => this.OnSubmit()}>Create</button>
         </form>
       }
       </div>
