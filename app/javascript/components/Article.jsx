@@ -39,8 +39,8 @@ class Article extends React.Component {
   render () {
     return (
       <li key={this.props.article.id}>
-        <div className="content" >
-          <a href={this.props.article.Url} target="blank" onClick={this.markasread}><p className="reducemargin">{this.props.article.Title}</p></a>
+        <div className="content">
+          <a href={this.props.article.Url} target="blank" onClick={this.markasread}><p>{this.props.article.Title}</p></a>
           <p>Publiée le: {this.state.date.toLocaleDateString()}</p>
           <p>{this.props.article.Description} </p>
           { this.state.lu && <a href="" onClick={this.markasunread}>Cet article est marqué comme Lu</a>}
