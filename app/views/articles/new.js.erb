@@ -1,5 +1,0 @@
-<% if @article.nil? %>
-
-<% else %>
-  $('#flux<%= @flux.id %>').firstChild().append("<%= j render 'show', article: @article %>");
-<% end %>

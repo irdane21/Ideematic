@@ -1,7 +1,0 @@
-<% if @article.errors.any? %>
-  jQuery('#fluxes').html("<%= j render 'fluxes/show', flux: @flux %>");
-<% else %>
-  jQuery('#<%= @article.id %>').html("<%= j render 'articles/show', article: @article %>");
-
-<% end %>
-

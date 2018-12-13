@@ -4,11 +4,6 @@ class FluxesController < ApplicationController
     @fluxes = Flux.all.order(created_at: params[:order] || :desc)
   end
 
-  def new
-    @flux = Flux.new
-    render json: @flux
-  end
-
   def create
     @fluxes = Flux.all
     @flux = Flux.new(flux_params)
