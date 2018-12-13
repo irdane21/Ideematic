@@ -3,10 +3,14 @@ import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {Title: '', Url: '', open: false};
+    this.state = {
+      Title: '',
+      Url: '',
+      open: false};
 
     this.handleChange1 = this.handleChange1.bind(this);
     this.handleChange2 = this.handleChange2.bind(this);
@@ -25,17 +29,20 @@ class Form extends React.Component {
 
   handleChange2(event) {
     this.setState({Url: event.target.value});
+
   }
 
   OnSubmit(e){
     e.preventDefault();
-    this.props.handleSubmit(this.state.Title, this.state.Url)
+    if (this.state.Title != '' && this.state.Url != '' ) {
+      this.props.handleSubmit(this.state.Title, this.state.Url)
+    }
     this.setState({ open: !this.state.open });
   }
 
   render () {
     return (<div id="new-flux">
-      { !this.state.open && <div className="btn btn-success" onClick={this.handleClick}>Ajouter un Flux</div>}
+      { !this.state.open && <div className="btn btn-success haut-droit" onClick={this.handleClick}>Ajouter un Flux</div>}
       { this.state.open &&
         <form>
           <p>Title</p>

@@ -16,15 +16,13 @@ class Page extends React.Component {
   }
 
   handleSubmit(title, url){
-    console.log("title", title)
     axios({
       method: 'post',
       headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
       url: '/fluxes',
       data: {Title: title, Url: url}
     }).then((response) => {
-      console.log(response.data)
-      this.setState({fluxes: [...this.state.fluxes, response.data]})
+      this.setState({fluxes: [response.data, ...this.state.fluxes]})
     });
   }
 

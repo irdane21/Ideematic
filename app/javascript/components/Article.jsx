@@ -36,14 +36,10 @@ class Article extends React.Component {
     this.setState({lu: false})
   }
 
-  componentDidMount(){
-    console.log("article", this.props.article)
-  }
-
   render () {
     return (
       <li key={this.props.article.id}>
-        <div className="content">
+        <div className="content" >
           <a href={this.props.article.Url} target="blank" onClick={this.markasread}><p className="reducemargin">{this.props.article.Title}</p></a>
           <p>Publiée le: {this.state.date.toLocaleDateString()}</p>
           <p>{this.props.article.Description} </p>

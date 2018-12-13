@@ -7,14 +7,13 @@ import Article from './Article'
 
 
 function DisplayArticles(props) {
-  console.log("péage3", props.articles)
   const listarticles = props.articles.map((article)=>{
     return (
       <Article article={article}/>
     );
   });
   return (
-    <div>{listarticles}</div>
+    <div key={props.id}>{listarticles}</div>
   );
 }
 
@@ -28,13 +27,13 @@ class Flux extends React.Component {
   getArticles(){
     const url = "/fluxes/" + this.props.id + "/articles"
     const request = axios.get(url).then((response)=>{
-      console.log('getArticles',response.data);
-      this.setState({articles: response.data})
+      if (this.mounted) {
+        this.setState({articles: response.data})
+      }
     })
   }
 
   checkArticles() {
-    console.log("endtimer")
     const url = "/fluxes/" + this.props.id + "/articles/new"
     axios({
       method: 'post',
@@ -42,23 +41,26 @@ class Flux extends React.Component {
       url: url,
     }).then((response) => {
       if (response.data != 0) {
-        console.log('response from new',response.data)
         this.setState({articles: response.data})
       }
     });
   }
 
 
-  componentWillMount(){
-    console.log("péage1.5", this.props.id)
-    this.getArticles();
+  componentDidMount(){
+    this.mounted = true;
+    if (this.mounted) {
+      this.getArticles();
+    }
     this.timerID = setInterval(
       () => this.checkArticles(),
-      120000
+      20000
     );
   }
 
-
+  componentWillUnmount(){
+    this.mounted = false;
+  }
 
   render () {
     return (

@@ -32,7 +32,8 @@ class ArticlesController < ApplicationController
       @article.Publication = @first.pubDate
       @article.flux_id = @flux.id
       if @article.save
-        @articles = @flux.articles
+        @articles_no_order = @flux.articles
+        @articles = order_by_date(@articles_no_order)
         render json: @articles
       else
         render json: 0
@@ -79,21 +80,16 @@ class ArticlesController < ApplicationController
 
   def order_by_date(articles)
     my_hash = {}
-    p "FIRST"
-    p articles
     articles.each do |article|
-      date = DateTime.new(article.Publication).amjd
-      p date
+      d = DateTime.parse(article.Publication)
+      date = DateTime.new(d.year,d.month,d.day,d.hour,d.min,d.sec,d.zone).ajd.to_f
       my_hash[date] = article
     end
-    my_hash.sort { |a, b| b <=> a }
-    @article = []
-    my_hash.each do |key, value|
+    sort = my_hash.sort{|a,z|z<=>a}.to_h
+    @articles = []
+    sort.each do |key, value|
       @articles << value
     end
-    p @articles
     @articles
   end
-
-
 end
